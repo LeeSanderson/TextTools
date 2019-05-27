@@ -89,3 +89,54 @@ One simple way to remove the **s** and **t** *words* from the results is to use 
 
 Now as well as **Frodo** and **Gandalf** appearing in the results we also have Frodo's best friend **Sam**.
 
+### Counting n-grams ###
+
+Counting n-grams, sequences of words, can give us more insight into the structure of the text.
+
+We can generate and count bi-grams (sequences of 2 word) with the following command:
+
+> dotnet TextTool.Console.dll count -i LOTR1.txt -s StopWordsEn.txt -m 2 -n 2
+
+
+1. said frodo - 220
+2. said gandalf - 135
+3. said aragorn - 65
+4. said sam - 62
+5. said merry - 59
+6. bag end - 56
+7. long ago - 55
+8. said pippin - 55
+9. chapter chapter - 53
+10. said strider - 51
+
+> Command completed in 655 ms.
+
+The bi-grams seem to show the main characters and how frequently they talk. We also see **chapter chapter** - a noise bi-gram that is generated because of the way the table of contents of the book is structured. 
+
+We can also generate and count tri-grams (sequences of 3 word) with the following command:
+
+> dotnet TextTool.Console.dll count -i LOTR1.txt -s StopWordsEn.txt -m 2 -n 3
+
+
+1. chapter chapter chapter - 47
+2. let us go - 10
+3. don know said - 8
+4. sam said frodo - 8
+5. said mr butterbur - 8
+6. aragorn son arathorn - 8
+7. frodo said gandalf - 6
+8. sir said sam - 6
+9. said frodo looking - 6
+10. mr frodo said - 6
+
+> Command completed in 749 ms.
+
+The tri-grams show conversations between the main characters - Gandalf talking to Frodo, Frodo talking to Sam and Sam talking to Frodo (as sir). We also see the expected **chapter chapter chapter** noise tri-gram and Aragorn being mentioned as **Aragorn son [of] Arathorn** - when he introduces himself or is welcomed by other characters throughout the book. 
+
+
+## Further Analysis ##
+
+Future version of the library could be enhanced to include additional ways to analyze the text. This could include:
+
+- Identification of named characters and places by filtering the words to only include tokens that are capitalized (ignoring words that are at the start of sentences).
+- Using n-gram analysis to detect plagiarism by comparing multiple documents. 

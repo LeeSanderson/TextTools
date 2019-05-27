@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TextTool.Console": {
+      "commandName": "Project",
+      "commandLineArgs": "-i LOTR1.txt -s StopWordsEn.txt -m 2 -n 3"
+    }
+  }
+}

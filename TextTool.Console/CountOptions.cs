@@ -43,6 +43,13 @@ namespace TextTool.Console
         [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "Set by command liner parser")]
         public int? MinLength { get; set; }
 
+        /// <summary>
+        /// Gets or sets the n grams.
+        /// </summary>
+        [Option('n', "ngrams", Required = false, HelpText = "The list of n-grams to generate before counting.")]
+        [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "Set by command liner parser")]
+        public IEnumerable<int> NGrams { get; set; }
+
         /// <inheritdoc />
         internal override IEnumerable<string> Validate()
         {
